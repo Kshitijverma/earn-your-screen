@@ -1,0 +1,45 @@
+# .NET
+bin/
+obj/
+*.csproj.user
+.vs/
+.vscode/
+Properties/launchSettings.json
+
+# Android
+.gradle/
+build/
+*.apk
+*.aar
+.idea/
+local.properties
+gradlew
+gradlew.bat
+
+# IDE
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Firebase
+firebase-config.json
+firebase-credentials.json
+service-account-key.json
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/

@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        "steps": {
+          ".write": "auth != null && auth.uid == $uid",
+          ".read": "auth != null"
+        }
+      }
+    },
+    "config": {
+      ".write": "auth != null && auth.uid == 'ADMIN_UID_PLACEHOLDER'",
+      ".read": "auth != null"
+    }
+  }
+}
