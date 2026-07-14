@@ -13,8 +13,9 @@ build/
 *.aar
 .idea/
 local.properties
-gradlew
-gradlew.bat
+# google-services.json contains Firebase project secrets; never commit the real one.
+# Use app/google-services.placeholder.json as a template.
+android-app/app/google-services.json
 
 # IDE
 *.swp
