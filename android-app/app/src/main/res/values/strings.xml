@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TypedPond Companion</string>
+
+    <string name="steps_unknown">Today\'s steps: —</string>
+    <string name="steps_fmt">Today\'s steps: %1$,d</string>
+    <string name="goal_unknown">Goal: —</string>
+    <string name="goal_fmt">Goal: %1$,d steps</string>
+
+    <string name="last_sync_none">Last sync: never</string>
+    <string name="last_sync_fmt">Last sync: %1$s</string>
+
+    <string name="signed_in">Firebase: signed in</string>
+    <string name="not_signed_in">Firebase: not signed in</string>
+
+    <string name="grant_step_access">Grant step access</string>
+    <string name="firebase_sign_in">Firebase sign-in</string>
+    <string name="sync_now">Sync now</string>
+    <string name="save_ip">Save laptop IP</string>
+
+    <string name="laptop_ip_label">Laptop IP (optional, e.g. 192.168.1.20:8787)</string>
+    <string name="laptop_ip_hint">host or host:port</string>
+
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+</resources>
