@@ -16,6 +16,8 @@ local.properties
 # google-services.json contains Firebase project secrets; never commit the real one.
 # Use app/google-services.placeholder.json as a template.
 android-app/app/google-services.json
+# Release signing keystore (generated locally or in CI)
+android-app/app/keystore/
 
 # IDE
 *.swp

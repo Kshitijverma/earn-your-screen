@@ -27,6 +27,18 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            val ksFile = file("keystore/release.jks")
+            if (ksFile.exists()) {
+                storeFile = ksFile
+                storePassword = (project.findProperty("typedpondStorePassword") as String?) ?: "typedpond"
+                keyAlias = (project.findProperty("typedpondKeyAlias") as String?) ?: "typedpond"
+                keyPassword = (project.findProperty("typedpondKeyPassword") as String?) ?: "typedpond"
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -34,6 +46,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            val ksFile = file("keystore/release.jks")
+            if (ksFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
         debug {
             isMinifyEnabled = false

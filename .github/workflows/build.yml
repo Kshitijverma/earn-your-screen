@@ -108,13 +108,22 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Generate signing keystore
+        run: |
+          mkdir -p app/keystore
+          keytool -genkeypair -v \
+            -keystore app/keystore/release.jks \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -alias typedpond \
+            -storepass typedpond \
+            -keypass typedpond \
+            -dname "CN=TypedPond, OU=Personal, O=EarnYourScreen, L=Unknown, ST=Unknown, C=US"
+
       - name: Build debug APK
         run: ./gradlew assembleDebug
 
       - name: Build release APK
-        run: ./gradlew assembleRelease
-        env:
-          typedpondHmacSecret: ${{ secrets.HMAC_SECRET || 'CHANGE-THIS-SECRET' }}
+        run: ./gradlew assembleRelease -PtypedpondStorePassword=typedpond -PtypedpondKeyAlias=typedpond -PtypedpondKeyPassword=typedpond
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
@@ -126,4 +135,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: TypedPondCompanion-release
-          path: android-app/app/build/outputs/apk/release/app-release-unsigned.apk
+          path: android-app/app/build/outputs/apk/release/app-release.apk
