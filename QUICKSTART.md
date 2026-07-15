@@ -10,8 +10,12 @@ Two ways to get the ready-to-install files. Pick whichever is easier for you.
 2. Go to the **Actions** tab — the "Build TypedPond" workflow runs automatically on push.
 3. When it finishes (about 5 minutes), click the completed run and download the artifacts:
    - **TypedPondSetup-windows** — contains `TypedPondSetup.exe`
-   - **TypedPondCompanion-debug** — contains `app-debug.apk` (unsigned, for testing)
-   - **TypedPondCompanion-release** — contains the release APK (unsigned)
+   - **TypedPondCompanion-debug** — contains `app-debug.apk` (debug-signed, for testing)
+   - **TypedPondCompanion-release** — contains the signed release APK
+
+   **Important:** GitHub delivers each artifact as a `.zip` file. You must **extract/unzip** it
+   first — the actual `.apk` or `.exe` is inside. Do NOT try to install the `.zip` directly
+   on Android; it will fail with "package seems to be invalid."
 
 That's it. No SDK needed on your machine.
 
@@ -52,7 +56,7 @@ cd typed-pond
 
 Output:
 - `windows-app\installer\Output\TypedPondSetup.exe`
-- `android-app\app\build\outputs\apk\release\app-release-unsigned.apk`
+- `android-app\app\build\outputs\apk\release\app-release.apk`
 
 ---
 

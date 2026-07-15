@@ -30,12 +30,17 @@ android {
     signingConfigs {
         create("release") {
             val ksFile = file("keystore/release.jks")
-            if (ksFile.exists()) {
-                storeFile = ksFile
-                storePassword = (project.findProperty("typedpondStorePassword") as String?) ?: "typedpond"
-                keyAlias = (project.findProperty("typedpondKeyAlias") as String?) ?: "typedpond"
-                keyPassword = (project.findProperty("typedpondKeyPassword") as String?) ?: "typedpond"
+            if (!ksFile.exists()) {
+                throw GradleException(
+                    "Release keystore missing: app/keystore/release.jks. " +
+                    "The APK would be unsigned and Android will refuse to install it. " +
+                    "Ensure the keystore is checked out (it is committed to the repo)."
+                )
             }
+            storeFile = ksFile
+            storePassword = (project.findProperty("typedpondStorePassword") as String?) ?: "typedpond"
+            keyAlias = (project.findProperty("typedpondKeyAlias") as String?) ?: "typedpond"
+            keyPassword = (project.findProperty("typedpondKeyPassword") as String?) ?: "typedpond"
         }
     }
 
@@ -46,10 +51,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            val ksFile = file("keystore/release.jks")
-            if (ksFile.exists()) {
-                signingConfig = signingConfigs.getByName("release")
-            }
+            signingConfig = signingConfigs.getByName("release")
         }
         debug {
             isMinifyEnabled = false
