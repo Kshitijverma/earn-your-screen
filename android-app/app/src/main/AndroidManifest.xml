@@ -26,11 +26,18 @@
         </intent>
     </queries>
 
+    <!--
+      usesCleartextTraffic: the laptop push is plain HTTP to a LAN IP
+      (http://192.168.x.x:8787). Android 9+ blocks cleartext HTTP from apps by
+      default, which surfaces as "laptop unreachable" even when the laptop is
+      fine. Integrity of the step data comes from the HMAC, not the transport.
+    -->
     <application
         android:allowBackup="true"
         android:icon="@android:drawable/ic_dialog_info"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TypedPondCompanion">
 
         <activity
